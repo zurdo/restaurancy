@@ -27,13 +27,14 @@ export async function POST(request: Request) {
   if (data.key !== "secret") return NextResponse.json({success: false});
 
   if (data.key === "secret") {
+    revalidatePath("/");
     revalidatePath("/[id]");
 
     return NextResponse.json({success: true, datetime});
   }
 }
 
-// fetch("http://localhost:3000/api/revalidate", {
+// fetch("https://restaurancy-pi.vercel.app/api/revalidate", {
 //   method: "POST",
 //   headers: {"Content-Type": "application/json"},
 //   body: JSON.stringify({key: "secret"}),
