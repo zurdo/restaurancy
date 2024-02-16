@@ -12,6 +12,7 @@ const api = {
   list: async (): Promise<Restaurant[]> => {
     const [, ...data] = await fetch(
       "https://docs.google.com/spreadsheets/d/e/2PACX-1vSOBI-iIMsOrSJM7Q5MjyOxoOYk5h005feJpojroduwQWtmrjVOhXKHNa1smtDO_AEx4lLrsS70uI9W/pub?output=csv",
+      {next: {tags: ["products"]}},
     )
       .then((res) => res.text())
       .then((text) => text.split("\n"));
@@ -34,6 +35,7 @@ const api = {
   fetch: async (id: Restaurant["id"]): Promise<Restaurant> => {
     const [, ...data] = await fetch(
       "https://docs.google.com/spreadsheets/d/e/2PACX-1vSOBI-iIMsOrSJM7Q5MjyOxoOYk5h005feJpojroduwQWtmrjVOhXKHNa1smtDO_AEx4lLrsS70uI9W/pub?output=csv",
+      {next: {tags: ["products"]}},
     )
       .then((res) => res.text())
       .then((text) => text.split("\n"));

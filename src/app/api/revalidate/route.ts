@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import {NextResponse} from "next/server";
-import {revalidatePath} from "next/cache";
+import {revalidateTag} from "next/cache";
 
 export async function POST(request: Request) {
   const currentdate = new Date();
@@ -27,8 +27,7 @@ export async function POST(request: Request) {
   if (data.key !== "secret") return NextResponse.json({success: false});
 
   if (data.key === "secret") {
-    revalidatePath("/");
-    revalidatePath("/[id]");
+    revalidateTag("products");
 
     return NextResponse.json({success: true, datetime});
   }
