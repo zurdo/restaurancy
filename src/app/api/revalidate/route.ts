@@ -27,7 +27,7 @@ export async function POST(request: Request) {
   if (data.key !== "secret") return NextResponse.json({success: false});
 
   if (data.key === "secret") {
-    revalidatePath("/");
+    revalidatePath("/[id]");
 
     return NextResponse.json({success: true, datetime});
   }
