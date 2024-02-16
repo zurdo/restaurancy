@@ -5,7 +5,22 @@ import {revalidatePath} from "next/cache";
 
 export async function POST(request: Request) {
   const currentdate = new Date();
-  const datetime = `Sync at ${currentdate.getDate()}/${currentdate.getMonth() + 1}/${currentdate.getFullYear()} ${currentdate.getHours()}:${currentdate.getMinutes()}:${currentdate.getSeconds()}`;
+  const date = currentdate.getDate();
+  const month = currentdate.getMonth() + 1;
+  const FullYear = currentdate.getFullYear();
+  const datetime =
+    "Sync at: " +
+    date +
+    "/" +
+    month +
+    "/" +
+    FullYear +
+    " " +
+    currentdate.getHours() +
+    ":" +
+    currentdate.getMinutes() +
+    ":" +
+    currentdate.getSeconds();
 
   const data = await request.json();
 
