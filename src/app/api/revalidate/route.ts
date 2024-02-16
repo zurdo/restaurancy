@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import {NextResponse} from "next/server";
 import {revalidatePath} from "next/cache";
 
@@ -16,11 +18,11 @@ export async function POST(request: Request) {
   }
 }
 
-fetch("http://localhost:3000/api/revalidate", {
-  method: "POST",
-  headers: {"Content-Type": "application/json"},
-  body: JSON.stringify({key: "secret"}),
-})
-  .then((response) => response.json())
-  .then((data) => console.log(data))
-  .catch((error) => console.error("Error:", error));
+// fetch("http://localhost:3000/api/revalidate", {
+//   method: "POST",
+//   headers: {"Content-Type": "application/json"},
+//   body: JSON.stringify({key: "secret"}),
+// })
+//   .then((response) => response.json())
+//   .then((data) => console.log(data))
+//   .catch((error) => console.error("Error:", error));
